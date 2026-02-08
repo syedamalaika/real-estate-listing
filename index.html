@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estatera | Premium Real Estate Listing</title>
+    <!-- Google Fonts: Outfit -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top py-3 shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-3 text-primary" href="#">
+                <i class="bi bi-buildings-fill me-2"></i>Estatera
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navMenu">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 me-lg-4">
+                    <li class="nav-item"><a class="nav-link active fw-medium" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link fw-medium" href="#">Properties</a></li>
+                    <li class="nav-item"><a class="nav-link fw-medium" href="#">About</a></li>
+                    <li class="nav-item"><a class="nav-link fw-medium" href="#">Contact</a></li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <div class="input-group input-group-sm me-3 d-none d-md-flex" style="width: 200px;">
+                        <span class="input-group-text bg-light border-0"><i class="bi bi-geo-alt"></i></span>
+                        <input type="text" id="navbarSearch" class="form-control bg-light border-0" placeholder="Location...">
+                    </div>
+                    <button class="btn btn-primary rounded-pill px-4 shadow-sm">Sign In</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero / Header -->
+    <header class="hero-section py-5 bg-light border-bottom">
+        <div class="container py-4 text-center">
+            <h1 class="display-4 fw-bold mb-3">Find Your Dream <span class="text-primary">Property</span></h1>
+            <p class="lead text-muted mb-5">Browse through our exclusive collection of premium houses, plots, and apartments.</p>
+            
+            <!-- Filters Section -->
+            <div class="card border-0 shadow-lg mx-auto p-3 p-md-4 rounded-4 filter-card" style="max-width: 900px;">
+                <div class="row g-3">
+                    <div class="col-md-3">
+                        <label class="form-label small fw-bold text-muted">Location</label>
+                        <select id="filterLocation" class="form-select border-0 bg-light py-2">
+                            <option value="all">All Locations</option>
+                            <option value="New York">New York</option>
+                            <option value="Los Angeles">Los Angeles</option>
+                            <option value="Miami">Miami</option>
+                            <option value="Chicago">Chicago</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label small fw-bold text-muted">Property Type</label>
+                        <select id="filterType" class="form-select border-0 bg-light py-2">
+                            <option value="all">All Types</option>
+                            <option value="House">House</option>
+                            <option value="Plot">Plot</option>
+                            <option value="Apartment">Apartment</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label small fw-bold text-muted">Price Range (<span id="priceValue">$5M</span>)</label>
+                        <input type="range" class="form-range" id="filterPrice" min="100000" max="5000000" step="50000" value="5000000">
+                    </div>
+                    <div class="col-md-2 d-grid">
+                        <label class="form-label small d-none d-md-block opacity-0">Search</label>
+                        <button id="applyFilters" class="btn btn-primary rounded-3 py-2">
+                            <i class="bi bi-search me-1"></i> Find
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Property Listings -->
+    <main class="container py-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h2 class="fw-bold mb-0">Exclusive Properties</h2>
+                <p id="propertyCount" class="text-muted small">Showing all properties</p>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-outline-secondary btn-sm active"><i class="bi bi-grid-3x3-gap"></i></button>
+                <button class="btn btn-outline-secondary btn-sm"><i class="bi bi-list-ul"></i></button>
+            </div>
+        </div>
+
+        <div class="row g-4" id="propertyGrid">
+            <!-- Property cards will be injected here by JS -->
+        </div>
+    </main>
+
+    <!-- Call to Action -->
+    <section class="cta-section bg-primary text-white py-5 position-relative overflow-hidden">
+        <div class="container py-4 text-center">
+            <h2 class="display-5 fw-bold mb-3">Want to List Your Property?</h2>
+            <p class="lead mb-4 opacity-75">Join thousands of sellers and get the best deal for your property today.</p>
+            <button class="btn btn-light btn-lg rounded-pill px-5 text-primary fw-bold shadow">Get Started Now</button>
+        </div>
+        <div class="cta-bg-shape position-absolute top-0 start-0 w-100 h-100 opacity-10"></div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white py-5 border-top">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <a class="navbar-brand fw-bold fs-3 text-primary mb-3 d-block" href="#">
+                        <i class="bi bi-buildings-fill me-2"></i>Estatera
+                    </a>
+                    <p class="text-muted pe-lg-4">The ultimate destination for premium real estate. We help you find the space you'll love calling home.</p>
+                    <div class="social-links d-flex gap-3">
+                        <a href="#" class="btn btn-outline-primary btn-sm rounded-circle"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="btn btn-outline-primary btn-sm rounded-circle"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#" class="btn btn-outline-primary btn-sm rounded-circle"><i class="bi bi-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <h6 class="fw-bold mb-3">Quick Links</h6>
+                    <ul class="list-unstyled text-muted small">
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Properties</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-muted">About Us</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Our Team</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h6 class="fw-bold mb-3">Legal</h6>
+                    <ul class="list-unstyled text-muted small">
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Terms of Service</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Privacy Policy</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Cookie Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h6 class="fw-bold mb-3">Subscribe</h6>
+                    <p class="text-muted small">Get the latest property updates.</p>
+                    <div class="input-group">
+                        <input type="email" class="form-control border-light-subtle" placeholder="Your email">
+                        <button class="btn btn-primary"><i class="bi bi-send"></i></button>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4 text-muted opacity-25">
+            <p class="text-center text-muted small mb-0">&copy; 2026 Estatera Real Estate. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Property Details Modal -->
+    <div class="modal fade" id="propertyModal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+                <div class="modal-body p-0" id="modalContent">
+                    <!-- Modal content will be injected here by JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="app.js"></script>
+</body>
+</html>
